@@ -1,10 +1,9 @@
 import allure
-import constants
-
 
 from selene import have, by
 from selene.support.shared import browser
 from allure_commons.types import Severity
+from constants import *
 
 
 @allure.tag("Web")
@@ -48,16 +47,14 @@ def open_search_field():
     browser.element(".search-input-container").click()
 
 
-@allure.step(f"Ввести '{constants.REPOSITORY_NAME}' и выполнить поиск")
+@allure.step(f"Ввести '{REPOSITORY_NAME}' и выполнить поиск")
 def search_for_repository():
-    browser.element("#query-builder-test").type(
-        f"{constants.REPOSITORY_NAME}"
-    ).press_enter()
+    browser.element("#query-builder-test").type(f"{REPOSITORY_NAME}").press_enter()
 
 
-@allure.step(f"Перейти в репозиторий '{constants.REPOSITORY_NAME}' из результатов")
+@allure.step(f"Перейти в репозиторий '{REPOSITORY_NAME}' из результатов")
 def open_repository_from_results():
-    browser.element(f"[href='/{constants.REPOSITORY_NAME}']").click()
+    browser.element(f"[href='/{REPOSITORY_NAME}']").click()
 
 
 @allure.step("Открыть вкладку Issues")
@@ -65,13 +62,11 @@ def open_issues_tab():
     browser.element("#issues-tab").click()
 
 
-@allure.step(f"Открыть задачу (issue) '{constants.ISSUE_NAME}'")
+@allure.step(f"Открыть задачу (issue) '{ISSUE_NAME}'")
 def open_specific_issue():
-    browser.element(by.text(f"{constants.ISSUE_NAME}")).click()
+    browser.element(by.text(f"{ISSUE_NAME}")).click()
 
 
-@allure.step(f"Проверить, что заголовок задачи равен '{constants.ISSUE_NAME}'")
+@allure.step(f"Проверить, что заголовок задачи равен '{ISSUE_NAME}'")
 def verify_issue_title():
-    browser.element("[data-testid='issue-title']").should(
-        have.text(f"{constants.ISSUE_NAME}")
-    )
+    browser.element("[data-testid='issue-title']").should(have.text(f"{ISSUE_NAME}"))
