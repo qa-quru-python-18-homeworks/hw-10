@@ -1,4 +1,5 @@
 import allure
+import constants
 
 from selene import have, by
 from selene.support.shared import browser
@@ -20,11 +21,13 @@ def test_issue_title_selene():
     # Act
     browser.element(".search-input-container").click()
     browser.element("#query-builder-test").type(
-        "eroshenkoam/allure-example"
+        f"{constants.REPOSITORY_NAME}"
     ).press_enter()
-    browser.element("[href='/eroshenkoam/allure-example']").click()
+    browser.element(f"[href='/{constants.REPOSITORY_NAME}']").click()
     browser.element("#issues-tab").click()
-    browser.element(by.text("Крокодилы ходят лёжа")).click()
+    browser.element(by.text(f"{constants.ISSUE_NAME}")).click()
 
     # Assert
-    browser.element("[data-testid='issue-title']").should(have.text("Крокодилы ходят лёжа"))
+    browser.element("[data-testid='issue-title']").should(
+        have.text(f"{constants.ISSUE_NAME}")
+    )

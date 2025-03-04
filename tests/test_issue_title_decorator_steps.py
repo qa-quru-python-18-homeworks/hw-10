@@ -1,4 +1,6 @@
 import allure
+import constants
+
 
 from selene import have, by
 from selene.support.shared import browser
@@ -46,16 +48,16 @@ def open_search_field():
     browser.element(".search-input-container").click()
 
 
-@allure.step("Ввести 'eroshenkoam/allure-example' и выполнить поиск")
+@allure.step(f"Ввести '{constants.REPOSITORY_NAME}' и выполнить поиск")
 def search_for_repository():
     browser.element("#query-builder-test").type(
-        "eroshenkoam/allure-example"
+        f"{constants.REPOSITORY_NAME}"
     ).press_enter()
 
 
-@allure.step("Перейти в репозиторий 'eroshenkoam/allure-example' из результатов")
+@allure.step(f"Перейти в репозиторий '{constants.REPOSITORY_NAME}' из результатов")
 def open_repository_from_results():
-    browser.element("[href='/eroshenkoam/allure-example']").click()
+    browser.element(f"[href='/{constants.REPOSITORY_NAME}']").click()
 
 
 @allure.step("Открыть вкладку Issues")
@@ -63,11 +65,13 @@ def open_issues_tab():
     browser.element("#issues-tab").click()
 
 
-@allure.step("Открыть задачу (issue) 'Крокодилы ходят лёжа'")
+@allure.step(f"Открыть задачу (issue) '{constants.ISSUE_NAME}'")
 def open_specific_issue():
-    browser.element(by.text("Крокодилы ходят лёжа")).click()
+    browser.element(by.text(f"{constants.ISSUE_NAME}")).click()
 
 
-@allure.step("Проверить, что заголовок задачи равен 'Крокодилы ходят лёжа'")
+@allure.step(f"Проверить, что заголовок задачи равен '{constants.ISSUE_NAME}'")
 def verify_issue_title():
-    browser.element("[data-testid='issue-title']").should(have.text("Крокодилы ходят лёжа"))
+    browser.element("[data-testid='issue-title']").should(
+        have.text(f"{constants.ISSUE_NAME}")
+    )
