@@ -36,11 +36,11 @@ def test_issue_title_with_lambda_steps():
     with allure.step("Открыть вкладку Issues"):
         browser.element("#issues-tab").click()
 
-    with allure.step("Открыть задачу (issue) 'Тестируем тест'"):
-        browser.element(by.text("Тестируем тест")).click()
+    with allure.step("Открыть задачу (issue) 'Крокодилы ходят лёжа'"):
+        browser.element(by.text("Крокодилы ходят лёжа")).click()
 
     # Assert
-    with allure.step("Проверить, что заголовок задачи равен 'Тестируем тест'"):
+    with allure.step("Проверить, что заголовок задачи равен 'Крокодилы ходят лёжа'"):
         browser.element("[data-testid='issue-title']").should(
-            have.text("Тестируем тест")
+            have.text("Крокодилы ходят лёжа")
         )

@@ -24,7 +24,7 @@ def test_issue_title_selene():
     ).press_enter()
     browser.element("[href='/eroshenkoam/allure-example']").click()
     browser.element("#issues-tab").click()
-    browser.element(by.text("Тестируем тест")).click()
+    browser.element(by.text("Крокодилы ходят лёжа")).click()
 
     # Assert
-    browser.element("[data-testid='issue-title']").should(have.text("Тестируем тест"))
+    browser.element("[data-testid='issue-title']").should(have.text("Крокодилы ходят лёжа"))

@@ -63,11 +63,11 @@ def open_issues_tab():
     browser.element("#issues-tab").click()
 
 
-@allure.step("Открыть задачу (issue) 'Тестируем тест'")
+@allure.step("Открыть задачу (issue) 'Крокодилы ходят лёжа'")
 def open_specific_issue():
-    browser.element(by.text("Тестируем тест")).click()
+    browser.element(by.text("Крокодилы ходят лёжа")).click()
 
 
-@allure.step("Проверить, что заголовок задачи равен 'Тестируем тест'")
+@allure.step("Проверить, что заголовок задачи равен 'Крокодилы ходят лёжа'")
 def verify_issue_title():
-    browser.element("[data-testid='issue-title']").should(have.text("Тестируем тест"))
+    browser.element("[data-testid='issue-title']").should(have.text("Крокодилы ходят лёжа"))
